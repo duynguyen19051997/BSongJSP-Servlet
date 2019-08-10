@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewrite>
+	<!-- <rule>
+		<from>/categories/(.*)-([0-9]+)</from>
+		<to>/public/cat?id=$2</to>
+	</rule> -->
+	<rule>
+		<from>/details(.*)-([0-9]+)</from>
+		<to>/public/detail?id=$2</to>
+	</rule>
+	<rule>
+		<from>/homepage/([0-9]+)</from>
+		<to>/public/index?page=$1</to>
+	</rule>
+	<rule>
+		<from>/categories/(.*)-([0-9]+)-([0-9]+)</from>
+		<to>/public/cat?id=$2&amp;page=$3</to>
+	</rule>
+	<rule>
+		<from>/homepage</from>
+		<to>/public/index</to>
+	</rule>
+	<rule>
+		<from>/searches/([0-9]+)</from>
+		<to>/public/search?page=$1</to>
+	</rule>
+	<rule>
+		<from>/contacts</from>
+		<to>/public/contact</to>
+	</rule>
+	<rule>
+		<from>/login.html</from>
+		<to>/auth/login</to>
+	</rule>
+</urlrewrite>
