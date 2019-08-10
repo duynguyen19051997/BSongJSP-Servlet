@@ -56,6 +56,8 @@
                                         <th style="text-align: center">Email</th>
                                         <th style="text-align: center">Website</th>
                                         <th style="text-align: center">Message</th>
+                                        <th style="text-align: center">Song Name</th>
+                                        <th style="text-align: center">Date Create</th>
                                         <th width="100px" style="text-align: center">Chức năng</th>
                                     </tr>
                                 </thead>
@@ -74,6 +76,8 @@
                                         <td class="center"><%=contact.getEmail()%></td>
                                         <td class="center"><%=contact.getWebsite() %></td>
                                         <td class="center"><%=contact.getMessage() %></td>
+                                        <td class="center"><%=contact.getSongName() %></td>
+                                        <td class="center"><%=StringUtil.convertIntoDate(contact.getDateCreate()) %></td>
                                         <td class="center">
                                             <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" href="<%=urlDelete %>" title="" class="btn btn-danger"><i class="fa fa-pencil"></i> Xóa</a>
                                         </td>

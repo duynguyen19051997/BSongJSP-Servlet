@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.bean.Category;
-import model.bean.Slide;
 import model.bean.Song;
 import util.DBConnectionUtil;
 import util.DefineUtil;
@@ -497,22 +496,6 @@ public class SongDao {
 		return listSong;
 	}
 
-	public int addSlide(Slide objSlide) {
-		int result = 0;
-		connect = DBConnectionUtil.getConnection();
-		String sql = "INSERT INTO slides (image, sort) VALUES (?, ?)";
-		try {
-			pst = connect.prepareStatement(sql);
-			pst.setString(1, objSlide.getImage());
-			pst.setInt(2, objSlide.getSort());
-			result = pst.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBConnectionUtil.close(pst, connect);
-		}
-		return result;
-	}
 
 	public int updateCounter(int id, int songCouter) {
 		int result = 0;

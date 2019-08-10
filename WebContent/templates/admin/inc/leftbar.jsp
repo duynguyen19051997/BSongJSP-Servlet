@@ -16,9 +16,6 @@
                 <a id="song" href="<%=request.getContextPath()%>/admin/song/index?page=<%=1%>"><i class="fa fa-music fa-3x"></i> Quản lý bài hát</a>
             </li>
             <li>
-                <a id="slide" href="<%=request.getContextPath()%>/admin/slide/index"><i class="fa fa-list fa-3x"></i> Quản lý slide</a>
-            </li>
-            <li>
                 <a id="user" href="<%=request.getContextPath()%>/admin/user/index?page=<%=1%>"><i class="fa fa-user fa-3x"></i> Quản lý người dùng</a>
             </li>
             <li>

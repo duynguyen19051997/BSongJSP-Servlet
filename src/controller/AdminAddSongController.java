@@ -62,7 +62,6 @@ public class AdminAddSongController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		CatDao catDao = new CatDao();
 		SongDao songDao = new SongDao();
-		int counter = 0;
 		//thông tin file
 		Part filePart = request.getPart("picture");
 		String songName = request.getParameter("name");

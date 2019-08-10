@@ -84,23 +84,6 @@
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <div class="panel panel-back noti-box">
-                    <span class="icon-box bg-color-green set-icon">
-                    <i class="fa fa-bell-o"></i>
-                </span>
-                    <div class="text-box">
-                        <p class="main-text"><a href="<%=request.getContextPath() %>/admin/slide/index" title="">Quản lý slide</a></p>
-                        <%
-                        	if(request.getAttribute("countSlide") != null){
-                        %>
-                        <p class="text-muted">Có <%=request.getAttribute("countSlide") %> hình ảnh</p>
-                        <%	}else{ %>
-                        <p class="text-muted">Không có dữ liệu</p>
-                        <%	} %>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="panel panel-back noti-box">
                     <span class="icon-box bg-color-blue set-icon">
                     <i class="fa fa-bars"></i>
                 </span>

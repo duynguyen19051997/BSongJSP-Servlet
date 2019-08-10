@@ -25,7 +25,7 @@ public class ContactDAO {
 			st = connect.createStatement();
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
-				Contact objCon = new Contact(rs.getInt("id"), rs.getString("name"), rs.getString("email"),
+				Contact objCon = new Contact(rs.getInt("id"), rs.getString("fullname"), rs.getString("email"),
 						rs.getString("website"), rs.getString("message"));
 				listCt.add(objCon);
 			}
@@ -46,7 +46,7 @@ public class ContactDAO {
 			pst.setInt(1, id);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				Contact objCon = new Contact(rs.getInt("id"), rs.getString("name"), rs.getString("email"),
+				Contact objCon = new Contact(rs.getInt("id"), rs.getString("fullname"), rs.getString("email"),
 						rs.getString("website"), rs.getString("message"), rs.getInt("songId"), rs.getTimestamp("date_create"));
 				listCt.add(objCon);
 			}
@@ -77,7 +77,7 @@ public class ContactDAO {
 	public int sendContact(Contact contact) {
 		int result = 0;
 		connect = DBConnectionUtil.getConnection();
-		String sql = "INSERT INTO contacts (name, email, website, message) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO contacts (fullname, email, website, message) VALUES (?, ?, ?, ?)";
 		try {
 			pst = connect.prepareStatement(sql);
 			pst.setString(1, contact.getName());
@@ -114,15 +114,15 @@ public class ContactDAO {
 	public ArrayList<Contact> getItemsPagination(int offset) {
 		ArrayList<Contact> listCt = new ArrayList<>();
 		connect = DBConnectionUtil.getConnection();
-		String sql = "SELECT * FROM contacts ORDER BY id DESC LIMIT ?, ?";
+		String sql = "SELECT c.*, s.name FROM contacts AS c INNER JOIN songs AS s ON s.id = c.songId ORDER BY id DESC LIMIT ?, ?";
 		try {
 			pst = connect.prepareStatement(sql);
 			pst.setInt(1, offset);
 			pst.setInt(2, DefineUtil.NUMBER_PER_PAGE);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				Contact objCon = new Contact(rs.getInt("id"), rs.getString("name"), rs.getString("email"),
-						rs.getString("website"), rs.getString("message"));
+				Contact objCon = new Contact(rs.getInt("id"), rs.getString("fullname"), rs.getString("email"),
+						rs.getString("website"), rs.getString("message"), rs.getInt("songId"), rs.getTimestamp("date_create"), rs.getString("name"));
 				listCt.add(objCon);
 			}
 		} catch (SQLException e) {
@@ -136,7 +136,7 @@ public class ContactDAO {
 	public int addItem(Contact contact) {
 		int result = 0;
 		connect = DBConnectionUtil.getConnection();
-		String sql = "INSERT INTO contacts (name, email, website, message, songId) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO contacts (fullname, email, website, message, songId) VALUES (?, ?, ?, ?, ?)";
 		try {
 			pst = connect.prepareStatement(sql);
 			pst.setString(1, contact.getName());
